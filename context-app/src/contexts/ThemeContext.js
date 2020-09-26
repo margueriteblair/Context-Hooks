@@ -12,19 +12,17 @@ const themes = {
         bg: '#555'
     }
 }
-
 export const ThemeContext = createContext()
+
+export default function ThemeContextProvider(props) {
     const [theme, setTheme] = useState('light')
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light')
     }
-
-export default function ThemeContextProvider() {
-    
     return (
         <div>
             <ThemeContext.Provider value={{...themes, toggleTheme, theme}}>
-                {this.props.children}
+                {props.children}
             </ThemeContext.Provider>
         </div>
     )
